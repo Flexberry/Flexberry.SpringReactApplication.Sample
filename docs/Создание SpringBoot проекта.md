@@ -62,3 +62,12 @@ src/main/java/net/flexberry/flexberrySampleSpring/...
 - **service** - сервисы. Содержат бизнес-логику
 - **utils** - вспомогательные классы.
 
+
+*ссылки на статьи*
+
+https://medium.com/the-resonant-web/spring-boot-2-0-project-structure-and-best-practices-part-2-7137bdcba7d3
+
+https://studygyaan.com/spring-boot/spring-boot-project-folder-structure-and-best-practices
+
+https://github.com/jhipster/jhipster-sample-app/tree/main/src/main/java/io/github/jhipster/sample
+
