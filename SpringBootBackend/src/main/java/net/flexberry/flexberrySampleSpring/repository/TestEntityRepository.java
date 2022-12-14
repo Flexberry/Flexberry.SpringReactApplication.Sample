@@ -13,11 +13,8 @@ import java.util.UUID;
     без дополнительного их объявления.
  */
 @Repository
-public interface TestEntityRepository extends JpaRepository<TestEntity, UUID> {
+public interface TestEntityRepository extends JpaRepository<TestEntity, Integer> {
 
     // Кроме базовых методов можно добавлять кастомные. Этот метод возвращает сущности с указанным типом enabled.
     List<TestEntity> findByEnabled(boolean enabled);
-
-    // А этот возвращает сущности с заданным именем.
-    List<TestEntity> findByName(String name);
 }

@@ -1,0 +1,11 @@
+version: '3'
+services:
+    springboot-postgres-db:
+        image: springbootsample/postgres
+        volumes:
+        - DB:/var/lib/pgsql/data/
+        ports:
+        - 5432:5432
+
+volumes:
+  DB:

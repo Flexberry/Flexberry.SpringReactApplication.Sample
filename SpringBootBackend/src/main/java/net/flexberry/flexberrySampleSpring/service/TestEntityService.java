@@ -1,4 +1,4 @@
-package net.flexberry.flexberrySampleSpring.services;
+package net.flexberry.flexberrySampleSpring.service;
 
 import net.flexberry.flexberrySampleSpring.model.TestEntity;
 import net.flexberry.flexberrySampleSpring.repository.TestEntityRepository;
@@ -13,23 +13,18 @@ public class TestEntityService {
     @Autowired
     TestEntityRepository repository;
 
-    public TestEntity getTestEntityById(UUID id) {
-        return repository.findById(id).get();
+    public TestEntity getTestEntity(int primaryKey) {
+        return repository.findById(primaryKey).get();
+    }
+    public List<TestEntity> getEnabledTestEntities() {
+        return repository.findByEnabled(true);
     }
 
     public void saveOrUpdateTestEntity(TestEntity testEntity) {
         repository.save(testEntity);
     }
 
-    public void deleteTestEntityById(UUID id) {
-        repository.deleteById(id);
-    }
-
-    public List<TestEntity> getTestEntitiesByName(String name) {
-        return repository.findByName(name);
-    }
-
-    public List<TestEntity> getTestEntitiesByEnabled(boolean enabled) {
-        return repository.findByEnabled(enabled);
+    public void deleteTestEntityByPrimaryKey(int primaryKey) {
+        repository.deleteById(primaryKey);
     }
 }

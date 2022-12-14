@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(schema = "public", name = "sample")
+@Table(schema = "public", name = "testentity")
 public class TestEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Column(name = "primarykey")
+    private int primarykey;
 
     @Column(name = "name")
     private String name;
@@ -23,12 +23,12 @@ public class TestEntity {
         super();
     }
 
-    public void setid(UUID id) {
-        this.id = id;
+    public void setprimaryKey(int primarykey) {
+        this.primarykey = primarykey;
     }
 
-    public UUID getid() {
-        return id;
+    public int getprimarykey() {
+        return primarykey;
     }
 
     public String getname() {
