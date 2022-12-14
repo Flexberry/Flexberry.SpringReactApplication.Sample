@@ -1,15 +1,15 @@
 package net.flexberry.flexberrySampleSpring;
 
-import net.flexberry.flexberrySampleSpring.objects.Comment;
-import net.flexberry.flexberrySampleSpring.objects.User;
+import net.flexberry.flexberrySampleSpring.object.Comment;
+import net.flexberry.flexberrySampleSpring.object.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static net.flexberry.flexberrySampleSpring.controllers.CommentController.commentsList;
-import static net.flexberry.flexberrySampleSpring.controllers.UserController.usersList;
+import static net.flexberry.flexberrySampleSpring.controller.CommentController.commentsList;
+import static net.flexberry.flexberrySampleSpring.controller.UserController.usersList;
 
 @SpringBootApplication
 @RestController

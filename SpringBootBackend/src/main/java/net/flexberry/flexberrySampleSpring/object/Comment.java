@@ -1,4 +1,4 @@
-package net.flexberry.flexberrySampleSpring.objects;
+package net.flexberry.flexberrySampleSpring.object;
 
 public class Comment {
     private int commentId;

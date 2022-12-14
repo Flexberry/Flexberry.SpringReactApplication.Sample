@@ -1,6 +1,6 @@
-package net.flexberry.flexberrySampleSpring.controllers;
+package net.flexberry.flexberrySampleSpring.controller;
 
-import net.flexberry.flexberrySampleSpring.objects.User;
+import net.flexberry.flexberrySampleSpring.object.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
