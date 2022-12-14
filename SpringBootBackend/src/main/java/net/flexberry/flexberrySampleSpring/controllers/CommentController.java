@@ -1,13 +1,13 @@
-package net.flexberry.flexberrySampleSpring.Controllers;
+package net.flexberry.flexberrySampleSpring.controllers;
 
-import net.flexberry.flexberrySampleSpring.Objects.Comment;
-import net.flexberry.flexberrySampleSpring.Objects.User;
+import net.flexberry.flexberrySampleSpring.objects.Comment;
+import net.flexberry.flexberrySampleSpring.objects.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.flexberry.flexberrySampleSpring.Controllers.UserController.usersList;
+import static net.flexberry.flexberrySampleSpring.controllers.UserController.usersList;
 
 @RestController
 @RequestMapping("/comments")

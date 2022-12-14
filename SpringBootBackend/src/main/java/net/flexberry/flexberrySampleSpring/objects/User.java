@@ -1,4 +1,4 @@
-package net.flexberry.flexberrySampleSpring.Objects;
+package net.flexberry.flexberrySampleSpring.objects;
 
 public class User {
     private int userId;
