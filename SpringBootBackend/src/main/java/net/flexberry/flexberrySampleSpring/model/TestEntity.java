@@ -1,9 +1,12 @@
 package net.flexberry.flexberrySampleSpring.model;
 
 import jakarta.persistence.*;
+import org.hibernate.envers.Audited;
+
 import java.util.UUID;
 
 @Entity
+@Audited
 @Table(schema = "public", name = "testentity")
 public class TestEntity {
     @Id

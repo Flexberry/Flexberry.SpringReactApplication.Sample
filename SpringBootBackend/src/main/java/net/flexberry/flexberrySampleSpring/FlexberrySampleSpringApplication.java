@@ -4,6 +4,8 @@ import net.flexberry.flexberrySampleSpring.object.Comment;
 import net.flexberry.flexberrySampleSpring.object.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,7 @@ import static net.flexberry.flexberrySampleSpring.controller.CommentController.c
 import static net.flexberry.flexberrySampleSpring.controller.UserController.usersList;
 
 @SpringBootApplication
+@EnableJpaRepositories(repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
 public class FlexberrySampleSpringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FlexberrySampleSpringApplication.class, args);
