@@ -13,7 +13,7 @@ public class TestEntityService {
     @Autowired
     TestEntityRepository repository;
 
-    public TestEntity getTestEntity(INT primaryKey) {
+    public TestEntity getTestEntity(int primaryKey) {
         return repository.findById(primaryKey).get();
     }
     public List<TestEntity> getEnabledTestEntities() {
