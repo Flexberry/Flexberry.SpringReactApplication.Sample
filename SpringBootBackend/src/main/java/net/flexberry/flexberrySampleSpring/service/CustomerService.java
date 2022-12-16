@@ -11,7 +11,7 @@ public class CustomerService {
     CustomerRepository repository;
 
     public Customer getCustomer(int primarykey) {
-        return repository.findById(primarykey).get();
+        return repository.findById(primarykey).orElse(null);
     }
 
     public void saveOrUpdateCustomer(Customer customer) {

@@ -11,7 +11,7 @@ public class CommentService {
     CommentRepository repository;
 
     public Comment getCommnet(int primarykey) {
-        return repository.findById(primarykey).get();
+        return repository.findById(primarykey).orElse(null);
     }
 
     public void saveOrUpdateComment(Comment comment) {
