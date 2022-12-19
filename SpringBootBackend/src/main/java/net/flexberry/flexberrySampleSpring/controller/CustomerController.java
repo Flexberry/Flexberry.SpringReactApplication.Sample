@@ -2,7 +2,9 @@ package net.flexberry.flexberrySampleSpring.controller;
 
 import net.flexberry.flexberrySampleSpring.model.Customer;
 import net.flexberry.flexberrySampleSpring.service.CustomerService;
+import net.flexberry.flexberrySampleSpring.utils.UUIDConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,5 +31,10 @@ public class CustomerController {
     @PutMapping("/customers")
     public void updateCustomer(@RequestBody Customer customer) {
         service.saveOrUpdateCustomer(customer);
+    }
+
+    @InitBinder
+    public void initBinder(final WebDataBinder webDataBinder) {
+        webDataBinder.registerCustomEditor(Customer.class, new UUIDConverter());
     }
 }

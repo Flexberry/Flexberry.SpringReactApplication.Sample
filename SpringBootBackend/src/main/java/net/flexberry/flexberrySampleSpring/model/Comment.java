@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.envers.Audited;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Audited
@@ -12,7 +13,7 @@ import java.util.Date;
 public class Comment {
     @Id
     @Column(name = "primarykey")
-    private int primarykey;
+    private UUID primarykey;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "commentdate")
@@ -29,10 +30,10 @@ public class Comment {
     public Comment() {
         super();
     }
-    public int getPrimarykey() {
+    public UUID getPrimarykey() {
         return primarykey;
     }
-    public void setPrimarykey(int primarykey) {
+    public void setPrimarykey(UUID primarykey) {
         this.primarykey = primarykey;
     }
 

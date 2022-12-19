@@ -1,8 +1,11 @@
 package net.flexberry.flexberrySampleSpring.controller;
 
 import net.flexberry.flexberrySampleSpring.model.Comment;
+import net.flexberry.flexberrySampleSpring.model.Customer;
 import net.flexberry.flexberrySampleSpring.service.CommentService;
+import net.flexberry.flexberrySampleSpring.utils.UUIDConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,5 +32,10 @@ public class CommentController {
     @PutMapping("/comments")
     public void updateComment(@RequestBody Comment comment) {
         service.saveOrUpdateComment(comment);
+    }
+
+    @InitBinder
+    public void initBinder(final WebDataBinder webDataBinder) {
+        webDataBinder.registerCustomEditor(Comment.class, new UUIDConverter());
     }
 }

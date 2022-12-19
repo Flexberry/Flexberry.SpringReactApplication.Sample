@@ -1,9 +1,11 @@
 package net.flexberry.flexberrySampleSpring.model;
 
 import jakarta.persistence.*;
+import net.flexberry.flexberrySampleSpring.utils.UUIDConverter;
 import org.hibernate.envers.Audited;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Audited
@@ -11,7 +13,7 @@ import java.util.List;
 public class Customer {
     @Id
     @Column(name = "primarykey")
-    private int primarykey;
+    private UUID primarykey;
 
     @Column(name = "name")
     private String name;
@@ -27,11 +29,11 @@ public class Customer {
         super();
     }
 
-    public int getPrimarykey() {
+    public UUID getPrimarykey() {
         return primarykey;
     }
 
-    public void setPrimarykey(int primarykey) {
+    public void setPrimarykey(UUID primarykey) {
         this.primarykey = primarykey;
     }
 
