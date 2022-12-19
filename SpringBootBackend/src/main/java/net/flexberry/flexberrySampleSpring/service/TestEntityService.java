@@ -14,7 +14,7 @@ public class TestEntityService {
     TestEntityRepository repository;
 
     public TestEntity getTestEntity(int primaryKey) {
-        return repository.findById(primaryKey).get();
+        return repository.findById(primaryKey).orElse(null);
     }
     public List<TestEntity> getEnabledTestEntities() {
         return repository.findByEnabled(true);
