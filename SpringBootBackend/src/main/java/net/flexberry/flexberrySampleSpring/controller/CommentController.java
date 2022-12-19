@@ -1,7 +1,6 @@
 package net.flexberry.flexberrySampleSpring.controller;
 
 import net.flexberry.flexberrySampleSpring.model.Comment;
-import net.flexberry.flexberrySampleSpring.model.Customer;
 import net.flexberry.flexberrySampleSpring.service.CommentService;
 import net.flexberry.flexberrySampleSpring.utils.UUIDConverter;
 import org.springframework.beans.factory.annotation.Autowired;
