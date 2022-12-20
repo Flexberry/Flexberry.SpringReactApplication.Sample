@@ -14,7 +14,7 @@ import java.util.UUID;
     без дополнительного их объявления.
  */
 @Repository
-public interface TestEntityRepository extends RevisionRepository<TestEntity, Integer, Integer>, JpaRepository<TestEntity, Integer> {
+public interface TestEntityRepository extends RevisionRepository<TestEntity, UUID, Integer>, JpaRepository<TestEntity, UUID> {
 
     // Кроме базовых методов можно добавлять кастомные. Этот метод возвращает сущности с указанным типом enabled.
     List<TestEntity> findByEnabled(boolean enabled);

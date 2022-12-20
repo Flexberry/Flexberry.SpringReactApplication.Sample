@@ -5,12 +5,14 @@ import net.flexberry.flexberrySampleSpring.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class CustomerService {
     @Autowired
     CustomerRepository repository;
 
-    public Customer getCustomer(int primarykey) {
+    public Customer getCustomer(UUID primarykey) {
         return repository.findById(primarykey).orElse(null);
     }
 
@@ -18,7 +20,7 @@ public class CustomerService {
         repository.save(customer);
     }
 
-    public void deleteCustomerByPrimaryKey(int primarykey) {
+    public void deleteCustomerByPrimaryKey(UUID primarykey) {
         repository.deleteById(primarykey);
     }
 }

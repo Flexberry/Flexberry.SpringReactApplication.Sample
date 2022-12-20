@@ -5,6 +5,7 @@ import net.flexberry.flexberrySampleSpring.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class CommentController {
     CommentService service;
 
     @GetMapping("/comments/{primarykey}")
-    public Comment getComment(@PathVariable("primarykey") int primaryKey) {
+    public Comment getComment(@PathVariable("primarykey") UUID primaryKey) {
         return service.getCommnet(primaryKey);
     }
 
@@ -25,7 +26,7 @@ public class CommentController {
     }
 
     @DeleteMapping("/comments/{primaryKey}")
-    public void deleteComment(@PathVariable("primaryKey") int primaryKey) {
+    public void deleteComment(@PathVariable("primaryKey") UUID primaryKey) {
         service.deleteCommentByPrimaryKey(primaryKey);
     }
 

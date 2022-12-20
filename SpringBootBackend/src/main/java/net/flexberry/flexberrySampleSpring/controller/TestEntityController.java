@@ -15,7 +15,7 @@ public class TestEntityController {
     TestEntityService service;
 
     @GetMapping("/testentities/{primaryKey}")
-    public TestEntity getTestEntity(@PathVariable("primaryKey") int primaryKey) {
+    public TestEntity getTestEntity(@PathVariable("primaryKey") UUID primaryKey) {
         return service.getTestEntity(primaryKey);
     }
 
@@ -25,7 +25,7 @@ public class TestEntityController {
     }
 
     @DeleteMapping("/testentities/{primaryKey}")
-    public void deleteTestEntity(@PathVariable("primaryKey") int primaryKey) {
+    public void deleteTestEntity(@PathVariable("primaryKey") UUID primaryKey) {
         service.deleteTestEntityByPrimaryKey(primaryKey);
     }
 

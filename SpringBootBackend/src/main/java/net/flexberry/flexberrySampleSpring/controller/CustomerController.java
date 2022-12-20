@@ -5,6 +5,8 @@ import net.flexberry.flexberrySampleSpring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
@@ -12,12 +14,12 @@ public class CustomerController {
     CustomerService service;
 
     @GetMapping("/customers/{primarykey}")
-    public Customer getCustomer(@PathVariable("primarykey") int primaryKey) {
+    public Customer getCustomer(@PathVariable("primarykey") UUID primaryKey) {
         return service.getCustomer(primaryKey);
     }
 
     @DeleteMapping("/customers/{primaryKey}")
-    public void deleteCustomer(@PathVariable("primaryKey") int primaryKey) {
+    public void deleteCustomer(@PathVariable("primaryKey") UUID primaryKey) {
         service.deleteCustomerByPrimaryKey(primaryKey);
     }
 

@@ -13,7 +13,7 @@ public class TestEntityService {
     @Autowired
     TestEntityRepository repository;
 
-    public TestEntity getTestEntity(int primaryKey) {
+    public TestEntity getTestEntity(UUID primaryKey) {
         return repository.findById(primaryKey).orElse(null);
     }
     public List<TestEntity> getEnabledTestEntities() {
@@ -24,7 +24,7 @@ public class TestEntityService {
         repository.save(testEntity);
     }
 
-    public void deleteTestEntityByPrimaryKey(int primaryKey) {
+    public void deleteTestEntityByPrimaryKey(UUID primaryKey) {
         repository.deleteById(primaryKey);
     }
 }
