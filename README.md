@@ -39,3 +39,21 @@ Java бэкенд на основе фреймворка Spring Boot
 
 
 ![image](https://user-images.githubusercontent.com/13151962/208078189-dbd020fa-22b3-491a-84ad-291f3e29dc52.png)
+
+### Примеры запросов для работы с файлами
+
+Загрузить файл:
+```console
+curl --location --request POST 'http://localhost:8080/files/' \
+--form 'file=@"/home/user/test.txt"'
+```
+
+Получить список файлов:
+```console
+curl --location --request GET 'http://localhost:8080/files/'
+```
+
+Скачать указанный файл:
+```console
+curl --location --request GET 'http://localhost:8080/files/test.txt'
+```
