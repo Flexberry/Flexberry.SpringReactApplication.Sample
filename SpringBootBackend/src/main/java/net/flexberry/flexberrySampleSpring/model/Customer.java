@@ -1,7 +1,7 @@
 package net.flexberry.flexberrySampleSpring.model;
 
 import jakarta.persistence.*;
-import net.flexberry.flexberrySampleSpring.utils.UUIDConverter;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.List;
@@ -12,6 +12,8 @@ import java.util.UUID;
 @Table(schema = "public", name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "primarykey")
     private UUID primarykey;
 

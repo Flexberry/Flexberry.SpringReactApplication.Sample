@@ -2,6 +2,7 @@ package net.flexberry.flexberrySampleSpring.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.Date;
@@ -12,6 +13,8 @@ import java.util.UUID;
 @Table(schema = "public", name = "comment")
 public class Comment {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "primarykey")
     private UUID primarykey;
 
