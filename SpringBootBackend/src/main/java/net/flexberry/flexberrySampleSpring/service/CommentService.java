@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class CommentService {
@@ -22,5 +24,10 @@ public class CommentService {
 
     public void deleteCommentByPrimaryKey(UUID primarykey) {
         repository.deleteById(primarykey);
+    }
+
+    // Возвращает комментарии в заданном диапазоне.
+    public List<Comment> getCommentsForPeriod(Date beginDate, Date endDate) {
+        return repository.findByCommentDateGreaterThanEqualAndCommentDateLessThanEqual(beginDate, endDate);
     }
 }
