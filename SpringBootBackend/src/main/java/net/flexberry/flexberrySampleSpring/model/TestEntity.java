@@ -1,6 +1,7 @@
 package net.flexberry.flexberrySampleSpring.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.UUID;
@@ -10,8 +11,10 @@ import java.util.UUID;
 @Table(schema = "public", name = "testentity")
 public class TestEntity {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "primarykey")
-    private int primarykey;
+    private UUID primarykey;
 
     @Column(name = "name")
     private String name;
@@ -26,11 +29,11 @@ public class TestEntity {
         super();
     }
 
-    public void setprimaryKey(int primarykey) {
+    public void setprimaryKey(UUID primarykey) {
         this.primarykey = primarykey;
     }
 
-    public int getprimarykey() {
+    public UUID getprimarykey() {
         return primarykey;
     }
 

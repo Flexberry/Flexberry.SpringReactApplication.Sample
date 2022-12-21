@@ -1,6 +1,6 @@
 CREATE TABLE testentity (
 
- primaryKey INTEGER NOT NULL,
+ primaryKey UUID NOT NULL,
 
  name VARCHAR(255) NULL,
  
@@ -13,7 +13,7 @@ CREATE TABLE testentity (
  
  CREATE TABLE customer (
 
- primarykey INTEGER NOT NULL,
+ primarykey UUID NOT NULL,
 
  name VARCHAR(255) NULL,
  
@@ -24,13 +24,13 @@ CREATE TABLE testentity (
  
  CREATE TABLE comment (
 
- primarykey INTEGER NOT NULL,
+ primarykey UUID NOT NULL,
 
  commentdate timestamp NULL,
  
  commenttext VARCHAR(255) NULL,
  
- customer_id integer REFERENCES customer(primarykey),
+ customer_id UUID REFERENCES customer(primarykey),
 
  PRIMARY KEY (primarykey));
 

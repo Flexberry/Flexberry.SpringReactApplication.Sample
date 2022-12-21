@@ -5,12 +5,16 @@ import net.flexberry.flexberrySampleSpring.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class CommentService {
     @Autowired
     CommentRepository repository;
 
-    public Comment getCommnet(int primarykey) {
+    public Comment getCommnet(UUID primarykey) {
         return repository.findById(primarykey).orElse(null);
     }
 
@@ -18,7 +22,12 @@ public class CommentService {
         repository.save(comment);
     }
 
-    public void deleteCommentByPrimaryKey(int primarykey) {
+    public void deleteCommentByPrimaryKey(UUID primarykey) {
         repository.deleteById(primarykey);
+    }
+
+    // Возвращает комментарии в заданном диапазоне.
+    public List<Comment> getCommentsForPeriod(Date beginDate, Date endDate) {
+        return repository.findByCommentDateGreaterThanEqualAndCommentDateLessThanEqual(beginDate, endDate);
     }
 }
