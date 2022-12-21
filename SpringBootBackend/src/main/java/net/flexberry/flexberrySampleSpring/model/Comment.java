@@ -3,9 +3,11 @@ package net.flexberry.flexberrySampleSpring.model;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Audited
@@ -13,8 +15,10 @@ import java.util.Date;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "primarykey")
 public class Comment {
     @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(name = "primarykey")
-    private int primarykey;
+    private UUID primarykey;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "commentdate")
@@ -30,10 +34,10 @@ public class Comment {
     public Comment() {
         super();
     }
-    public int getPrimarykey() {
+    public UUID getPrimarykey() {
         return primarykey;
     }
-    public void setPrimarykey(int primarykey) {
+    public void setPrimarykey(UUID primarykey) {
         this.primarykey = primarykey;
     }
 
