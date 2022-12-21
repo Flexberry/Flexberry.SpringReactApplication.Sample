@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Audited
@@ -35,11 +36,11 @@ public class Customer {
         super();
     }
 
-    public int getPrimarykey() {
+    public UUID getPrimarykey() {
         return primarykey;
     }
 
-    public void setPrimarykey(int primarykey) {
+    public void setPrimarykey(UUID primarykey) {
         this.primarykey = primarykey;
     }
 
