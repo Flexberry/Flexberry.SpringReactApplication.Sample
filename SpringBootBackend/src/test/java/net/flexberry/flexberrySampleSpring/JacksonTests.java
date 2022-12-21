@@ -25,7 +25,7 @@ class JacksonTests {
 	 * @throws JsonProcessingException Исключение при сериализации в JSON.
 	 */
 	@Test
-	public void bidirectionalCircularRelationThrowNoStackOverflow() throws JsonProcessingException {
+	void bidirectionalCircularRelationThrowNoStackOverflow() throws JsonProcessingException {
 		final Customer customer = new Customer();
 		customer.setPrimarykey(UUID.fromString("593274F8-4461-451D-9804-62ED9F6DED1F"));
 		customer.setAge(30);
