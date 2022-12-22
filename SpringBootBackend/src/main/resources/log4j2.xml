@@ -7,8 +7,8 @@
         </Console>
 
         <RollingFile name="RollingFile"
-                     fileName="c:/Work/logs/flexberrySpringBoot/spring-boot-logger-log4j2.log"
-                     filePattern="c:/Work/logs/flexberrySpringBoot/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+                     fileName="./logs/flexberrySpringBoot/spring-boot-logger-log4j2.log"
+                     filePattern="./logs/flexberrySpringBoot/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
             <PatternLayout>
                 <pattern>%d %p %C{1.} [%t] %m%n</pattern>
             </PatternLayout>
@@ -21,13 +21,6 @@
                 <TimeBasedTriggeringPolicy />
             </Policies>
         </RollingFile>
-
-        <!-- Лог в системный журнал пока не работает -->
-        <!--Syslog name="Syslog"
-                format="RFC5424" host="localhost" port="514"
-                protocol="TCP" facility="local3" connectTimeoutMillis="10000"
-                reconnectionDelayMillis="5000">
-        </Syslog-->
 
         <JDBC name="databaseAppender" tableName="public.ApplicationLog">
             <DriverManager connectionString="jdbc:postgresql://localhost:5432/appdb"
@@ -52,12 +45,5 @@
 
         <!-- LOG "com.baeldung*" at TRACE level -->
         <Logger name="com.baeldung" level="trace"/>
-
-        <Logger name="FAIL_OVER_SYSLOG_APPENDER"
-                level="INFO"
-                additivity="false">
-            <AppenderRef ref="RollingFile" />
-        </Logger>
     </Loggers>
-
 </Configuration>
