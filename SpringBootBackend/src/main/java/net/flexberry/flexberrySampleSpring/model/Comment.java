@@ -1,9 +1,7 @@
 package net.flexberry.flexberrySampleSpring.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
 
 import java.util.Date;
@@ -12,12 +10,8 @@ import java.util.UUID;
 @Entity
 @Audited
 @Table(schema = "public", name = "comment")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "primarykey")
 public class Comment {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(name = "primarykey")
     private UUID primarykey;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -27,8 +21,9 @@ public class Comment {
     @Column(name = "commenttext")
     private String commentText;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
+    @JsonIgnoreProperties("comments")
     private Customer customer;
 
     public Comment() {
