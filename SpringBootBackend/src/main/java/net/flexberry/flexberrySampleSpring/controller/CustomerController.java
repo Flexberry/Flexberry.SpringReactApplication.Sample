@@ -2,7 +2,6 @@ package net.flexberry.flexberrySampleSpring.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.flexberry.flexberrySampleSpring.db.filter.internal.Condition;
-import net.flexberry.flexberrySampleSpring.model.Comment;
 import net.flexberry.flexberrySampleSpring.model.Customer;
 import net.flexberry.flexberrySampleSpring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class CustomerController {
     }
 
     @GetMapping("/filteringCustomers")
-    public List<Customer> getCommentsForPeriod(@RequestBody List<Condition> conditions) throws JsonProcessingException {
+    public List<Customer> getCommentsForPeriod(@RequestBody List<Condition> conditions) {
         return service.getFilteringCustomers(conditions);
     }
 

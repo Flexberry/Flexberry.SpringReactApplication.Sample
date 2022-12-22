@@ -16,13 +16,8 @@ import java.util.List;
 public class CustomFilter implements Specification {
     List<Condition> conditions;
 
-    public CustomFilter(String json) throws JsonProcessingException {
-       ObjectMapper mapper = new ObjectMapper();
-       this.conditions = mapper.readValue(json, mapper.getTypeFactory().constructCollectionType(List.class, Condition.class));
-    }
-
-    public CustomFilter() {
-        conditions = new ArrayList<>();
+    public CustomFilter(List<Condition> conditions) {
+        this.conditions = conditions;
     }
 
     public void addCondition(Condition condition) {
@@ -36,38 +31,27 @@ public class CustomFilter implements Specification {
     @Override
     public Predicate toPredicate(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = buildPredicates(root, criteriaQuery, criteriaBuilder);
+        int predicateSize = predicates.size();
 
-        var sd = criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
-
-        return predicates.size() > 1
-                ? criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]))
+        return predicateSize > 1
+                ? criteriaBuilder.and(predicates.toArray(new Predicate[predicateSize]))
                 : predicates.get(0);
     }
 
     private List<Predicate> buildPredicates(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {
-        List<Predicate> predicates = new ArrayList<>();
-        conditions.forEach(condition -> predicates.add(buildPredicate(condition, root, criteriaQuery, criteriaBuilder)));
-        return predicates;
+        return conditions.stream().map(condition -> buildPredicate(condition, root, criteriaQuery, criteriaBuilder)).toList();
     }
 
     public Predicate buildPredicate(Condition condition, Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {
         switch (condition.compareType) {
             case eq:
                 return buildEqualsPredicateToCriteria(condition, root, criteriaQuery, criteriaBuilder);
-            case gt:
-                break;
-            case lt:
-                break;
-            case ne:
-                break;
-            case isnull:
-                break;
-            case in:
+            case gt, lt, ne, isnull, in:
                 break;
             default:
                 return buildEqualsPredicateToCriteria(condition, root, criteriaQuery, criteriaBuilder);
         }
-        throw new RuntimeException();
+        throw new RuntimeException("Can't build filter query predicate");
     }
 
     private Predicate buildEqualsPredicateToCriteria(Condition condition, Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {

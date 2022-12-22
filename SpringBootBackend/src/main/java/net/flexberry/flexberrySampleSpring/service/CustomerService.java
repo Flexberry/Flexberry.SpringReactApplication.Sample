@@ -1,6 +1,5 @@
 package net.flexberry.flexberrySampleSpring.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import net.flexberry.flexberrySampleSpring.db.filter.CustomFilter;
 import net.flexberry.flexberrySampleSpring.db.filter.internal.Condition;
 import net.flexberry.flexberrySampleSpring.model.Customer;
@@ -28,9 +27,8 @@ public class CustomerService {
         repository.deleteById(primarykey);
     }
 
-    public List<Customer> getFilteringCustomers(List<Condition> conditions) throws JsonProcessingException {
-        CustomFilter filter = new CustomFilter();
-        filter.addCondition(conditions);
+    public List<Customer> getFilteringCustomers(List<Condition> conditions) {
+        CustomFilter filter = new CustomFilter(conditions);
         List<Customer> customers = repository.findAll(filter);
 
         return customers;
