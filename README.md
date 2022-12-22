@@ -6,9 +6,13 @@ Java бэкенд на основе фреймворка Spring Boot
 
 1) Работа с БД Postgres. Для примера созданы сущности Customer и Comment.
 2) Выполнение простых REST запросов к сущностям - GET, POST, PUT, DELETE.
-3) Связи между сущностями. Comment является детейлом Customer.
+3) Связи между сущностями. Comment является детейлом Customer. Решена цикличность запроса Детейл-Мастер-Детейл-Мастер....
 4) Аудит операций на основе Envers. Для каждой таблицы автоматически создается таблица аудита в этой же БД + одна общая служебная таблица.
-5) Запуск в Docker.
+5) Сложный запрос на основе нескольких параметров - выборка комментариев в заданном периоде времени.
+6) Система логировани с возможностью назначать свои тексты на разные типы ошибок.
+7) Работа с файлами - Загрузка/Выгрузка.
+8) Реализация фильтра по нескольким параметрам. Число параметров модели для фильтра любое, но в качестве примера реализован только тип сравнения "="(equal).
+9) Запуск в Docker.
 
 ### Запуск в Docker
 
@@ -26,19 +30,29 @@ Java бэкенд на основе фреймворка Spring Boot
 
 Запросы выполняются в Postman
 
-![image](https://user-images.githubusercontent.com/13151962/208077421-dc281e00-9ae4-4ddb-965a-de31fa31c441.png)
+![image](https://user-images.githubusercontent.com/13151962/209081633-c5b2a222-7a23-434c-99a3-1712e61fb343.png)
 
 
-![image](https://user-images.githubusercontent.com/13151962/208077800-2ef45a9d-f697-4282-a433-1c195ea293d7.png)
+![image](https://user-images.githubusercontent.com/13151962/209081873-5729dc43-6848-4dbb-b613-379ad0c134e3.png)
 
 
-![image](https://user-images.githubusercontent.com/13151962/208077968-88424ebc-3dc5-41c5-b424-52ee2c2f7c0c.png)
+![image](https://user-images.githubusercontent.com/13151962/209081952-4b9a5006-1b49-4293-bf29-55f02cb6efee.png)
 
 
-![image](https://user-images.githubusercontent.com/13151962/208078069-c59be0ca-9e67-42be-abc3-8a6e0f996fc6.png)
+![image](https://user-images.githubusercontent.com/13151962/209082221-be3192ae-11d7-44d7-b693-32e83418952c.png)
 
+### Пример POST для детейла
 
-![image](https://user-images.githubusercontent.com/13151962/208078189-dbd020fa-22b3-491a-84ad-291f3e29dc52.png)
+![image](https://user-images.githubusercontent.com/13151962/209082409-aa426f01-ac34-4913-a5f6-823edab5484c.png)
+
+### Запрос на выборку комментариев в диапазоне дат
+
+![image](https://user-images.githubusercontent.com/13151962/209084489-e4765321-3fc9-4784-8080-0bb39c43a3e4.png)
+![image](https://user-images.githubusercontent.com/13151962/209084537-b25fbad7-0fc5-446d-b43c-4fd23d38635c.png)
+
+### Запрос с фильтром
+
+![image](https://user-images.githubusercontent.com/13151962/209091994-9933c37d-6ad5-478c-8c62-ebac30aef858.png)
 
 ### Примеры запросов для работы с файлами
 
