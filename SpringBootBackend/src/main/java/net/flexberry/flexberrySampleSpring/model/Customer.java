@@ -1,5 +1,8 @@
 package net.flexberry.flexberrySampleSpring.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.envers.Audited;
@@ -10,6 +13,7 @@ import java.util.UUID;
 @Entity
 @Audited
 @Table(schema = "public", name = "customer")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "primarykey")
 public class Customer {
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -23,6 +27,7 @@ public class Customer {
     @Column(name = "age")
     private Integer age;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Comment> comments;
