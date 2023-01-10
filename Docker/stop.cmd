@@ -1,1 +1,1 @@
-docker stack rm SpringBootSample
+docker compose down SpringBootSample
